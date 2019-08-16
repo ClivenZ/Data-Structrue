@@ -6,6 +6,7 @@ int main() {
 	//quickSortNorecusiveH(arr, 0, 8);
 	//quickSortRecusiveW(arr, 0, 8);
 	//quickSortNorecusiveW(arr, 0, 8);
-	quickSortRecusiveZ(arr, 0, 8);
+	//quickSortRecusiveZ(arr, 0, 8);
+	quickSortNorecusiveZ(arr, 0, 8);
 	return 0;
 }

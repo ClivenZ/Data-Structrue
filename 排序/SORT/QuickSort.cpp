@@ -132,37 +132,60 @@ void quickSortNorecusiveW(int* data, int left, int right) {
 /***********************
 *	双指针方法           *
 ***********************/
-int partitionZ(int* data, int left, int right) {
-	int pivot = data[left];
+int partitionZ(int* arr, int left, int right) {
+	int index = left;
+	int pivot = arr[left];
 	while (left < right) {
 		while (left < right) {
-			if (data[right] < pivot)
+			if (arr[right] < pivot)
 				break;
 			--right;
 		}
 		while (left < right) {
-			if (data[left] > pivot)
+			if (arr[left] > pivot)
 				break;
 			++left;
 		}
 		if(left < right)
-			Swap(data[left], data[right]);
+			swap(arr[left], arr[right]);
 	}
-	Swap(data[left], pivot);
+	swap(arr[left], arr[index]);
 	return left;
 }
 //递归
-void quickSortRecusiveZ(int* data, int left, int right) {
-	if (data == NULL || left < 0 || right <= 0 || left > right)
+void quickSortRecusiveZ(int* arr, int left, int right) {
+	if (arr == NULL || left < 0 || right <= 0 || left > right)
 		return;
-	int pos = partitionZ(data, left, right);
+	int pos = partitionZ(arr, left, right);
 
 	if(left < pos)
-		quickSortRecusiveZ(data, left, pos - 1);
+		quickSortRecusiveZ(arr, left, pos - 1);
 	if(right > pos)
-		quickSortRecusiveZ(data, pos + 1, right);
+		quickSortRecusiveZ(arr, pos + 1, right);
 }
 //非递归
-void quickSortNorecusiveZ(int* data, int left, int right) {
-
+void quickSortNorecusiveZ(int* arr, int left, int right) {
+	if (arr == NULL || left < 0 || right <= 0 || left > right)
+		return;
+	stack<int> s;
+	s.push(right);
+	s.push(left);
+	int l, r;
+	while (!s.empty()) {
+		l = s.top();
+		s.pop();
+		r = s.top();
+		s.pop();
+		if(l < r){
+			int pos = partitionZ(arr, l, r);
+			if (l < pos) {
+				s.push(pos - 1 );
+				s.push(l);
+			}
+			if (r > pos) {
+				s.push(r);
+				s.push(l + 1);
+			}
+		}
+	}
 }

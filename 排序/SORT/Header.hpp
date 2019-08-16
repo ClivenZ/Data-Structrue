@@ -17,5 +17,5 @@ void quickSortRecusiveW(int* arr, int left, int right);
 void quickSortNorecusiveW(int* arr, int left, int right);
 //Ë«Ö¸Õë
 int partitionZ(int* data, int left, int right);
-void quickSortNorecusiveZ(int* data, int left, int right);
-void quickSortRecusiveZ(int* data, int left, int right);
+void quickSortNorecusiveZ(int* arr, int left, int right);
+void quickSortRecusiveZ(int* arr, int left, int right);
